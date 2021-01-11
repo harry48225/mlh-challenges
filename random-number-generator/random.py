@@ -16,14 +16,20 @@ class Random(object):
     def generate_number(self):
         ''' Returns a number between 0 and 9 inclusive '''
 
-        self.current_number = (3.5699456)*(self.current_number)*(1 - self.current_number)
-
-        return int(str(self.current_number)[-1])
+        self.current_number = (3.9)*(self.current_number)*(1 - self.current_number)
+        return int(str(self.current_number)[3]) # Take the fourth digit
 
 
 # Example
 
-r = Random(123)
-p = Random(12345)
-for i in range(10):
-    print("seed: 123, number: {}, seed: 12345: number: {}".format(r.generate_number(), p.generate_number()))
+r = Random(234)
+
+randoms_generated = [0 for i in range(10)]
+
+for _ in range(100000):
+
+    num = r.generate_number()
+
+    randoms_generated[num - 1] += 1
+
+print(randoms_generated)
