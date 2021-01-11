@@ -1,6 +1,6 @@
 import math
-# Uses a logistic map with r ~ 3.5699456
-# x_{n+1} = 3.5699456(x_n)(1-x_n)
+# Uses a logistic map with r = 3.9
+# x_{n+1} = 3.9(x_n)(1-x_n)
 
 
 class Random(object):
