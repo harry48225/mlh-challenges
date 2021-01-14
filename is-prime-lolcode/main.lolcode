@@ -1,0 +1,27 @@
+HAI 1.2
+I HAS A number
+GIMMEH number
+number IS NOW A NUMBR
+I HAS A i
+i R 2
+
+DIFFRINT number AN 1, O RLY?
+    YA RLY
+        IM IN YR LOOP
+            BOTH SAEM i AN number
+            O RLY?, YA RLY, GTFO, OIC
+
+            I HAS A remainder ITZ MOD OF number AN i
+            BOTH SAEM remainder AN 0, O RLY?
+                YA RLY, number R ";_;", GTFO
+            OIC
+
+            i R SUM OF i AN 1
+        IM OUTTA YR LOOP
+    NO WAI, number R ";_;"
+OIC
+BOTH SAEM number AN ";_;", O RLY?
+    YA RLY, VISIBLE "IS NOT PRIME ;_;"
+    NO WAI, VISIBLE  "IS PRIME!!!111 ^.^"
+OIC
+KTHXBYE
