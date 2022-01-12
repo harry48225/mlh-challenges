@@ -1,11 +1,17 @@
 <script lang="ts">
-  import { Bodies, Composite, Runner } from 'matter-js';
+  import Matter, { Bodies, Composite, Mouse, Runner, World } from 'matter-js';
   import { Render } from 'matter-js';
   import { Engine } from 'matter-js';
-import { onMount } from 'svelte';
+  import { onMount } from 'svelte';
   
+  const engine = Engine.create();
+
+  const spawnBox = () => {
+    const box = Bodies.rectangle(100, 100, 50, 50, {restitution: 0.5})
+    World.add(engine.world, box)
+  }
+
   onMount(() => {
-    const engine = Engine.create();
     const render = Render.create({
       canvas: document.getElementById("canvas") as HTMLCanvasElement,
       engine: engine
@@ -20,6 +26,21 @@ import { onMount } from 'svelte';
     const runner = Runner.create()
 
     Runner.run(runner, engine);
+
+    let mouseConstraint = Matter.MouseConstraint.create(
+      engine, 
+      {
+        mouse: Mouse.create(render.canvas),
+        constraint: {
+            stiffness: 0.1,
+            render: {
+                visible: false
+            },
+        }
+      });
+    World.add(engine.world, mouseConstraint);
+
+    setInterval(() => spawnBox(), 2000)
   })
 </script>
   
