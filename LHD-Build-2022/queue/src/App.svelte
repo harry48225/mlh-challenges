@@ -5,10 +5,13 @@
   import { onMount } from 'svelte';
   
   const engine = Engine.create();
+  const queue = [];
 
   const spawnBox = () => {
     const box = Bodies.rectangle(100, 100, 50, 50, {restitution: 0.5})
-    World.add(engine.world, box)
+    World.add(engine.world, box);
+
+    queue.push(box);
   }
 
   onMount(() => {
@@ -32,7 +35,7 @@
       {
         mouse: Mouse.create(render.canvas),
         constraint: {
-            stiffness: 0.1,
+            stiffness: 1,
             render: {
                 visible: false
             },
@@ -40,7 +43,12 @@
       });
     World.add(engine.world, mouseConstraint);
 
-    setInterval(() => spawnBox(), 2000)
+    setInterval(() => spawnBox(), 4000)
+    setInterval(() => {
+      if (queue.length > 6) {
+        Composite.remove(engine.world, queue.shift());
+      }
+    }, 1500)
   })
 </script>
   
